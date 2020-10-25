@@ -1,16 +1,8 @@
-<nav>
-    <ul>
-        <li><a href= "TODO:"></a></li>
-        <li><a href= "FORMAT"></a></li>
-        <li><a href= "MENU"></a></li>
-    </ul>
-</nav>
+
 <h1>Welcome, Challenger!</h1>
 <p>TODO: Introductory text</p>
-<div>
-    <container>
-        {{#each db.Problem}}
-        <button>{{this.description}}</button>
+<div class='container'>
+        {{#each problem}}
+        <button><a href= "/problem/{{this.name}}">{{this.name}}</a></button>
         {{/each}}
-    </container>
 </div>

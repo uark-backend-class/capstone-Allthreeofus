@@ -1,0 +1,13 @@
+<div class="container">
+    <h1>Favorites</h1>
+    <container>
+    {{#if favorites}}
+    {{#each favorites}}
+    <h2>{{this.name}}</h2>
+    {{/each}}
+    {{/if}}
+    {{#unless favorites}}
+    <p>See all your saved solutions here!</p>
+    {{/unless}}
+    </container>
+</div>
