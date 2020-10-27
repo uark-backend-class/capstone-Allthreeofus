@@ -6,16 +6,18 @@
   <title>Challenging Interview Challenges</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
-<body>
-  <nav>
-    <ul>
-        {{#unless user}}<li><a href='/login'>Login</a></li>{{/unless}}
-        {{#if user}}<li><a href= '/logout'>Logout</a></li>
-        <li><a href= '/profile/{{user.[0].username}}'>Profile</a></li>{{/if}}
-        <li><a href= '/'>Home</a></li>
-    </ul>
-</nav>
-  <div class="container">
+<body class='bg-dark'>
+  <div class='border border-secondary p-1 bg-secondary'>
+    <nav class='mb-3'>
+      <form method='get' class='d-flex flex-row'>
+          {{#unless user}}<button type='submit' formaction='/login' class='p-2 rounded pill bg-dark text-primary'>Login</button>{{/unless}}
+          {{#if user}}<button type='submit' formaction='/logout' class='p-2 rounded pill bg-dark text-primary'>Logout</button>
+          <button type='submit' formaction='/profile' class='p-2 rounded pill bg-dark text-primary'>Profile</button>{{/if}}
+          <button type='submit' formaction='/' class='p-2 rounded pill bg-dark text-primary'>Home</button>
+    </nav>
+    {{#if user}}<h2 class='text-white m-auto bg-primary p-2 rounded-pill' style='width:fit-content;'>{{user.username}}</h2>{{/if}}
+  </div><br><br>
+  <div class='container'>
     {{{body}}}
   </div>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

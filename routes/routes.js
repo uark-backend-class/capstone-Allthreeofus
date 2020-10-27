@@ -5,13 +5,15 @@ const challengesController = require('../controllers/controller');
 router.get('/', challengesController.home);
 router.post('/add', challengesController.addSolution);
 router.post('/update', challengesController.updateSolution);
-router.get('/problem/:id', challengesController.problem)
-router.get('/delete', challengesController.deleteSolution);
+router.get('/problem/:id', challengesController.problem);
+router.get('/solution/:solution', challengesController.solution);
+router.post('/delete/favorite', challengesController.deleteFavorite);
+router.post('/delete/solution', challengesController.deleteSolution);
 router.get('/login', challengesController.login);
 router.get('/logout', challengesController.logout);
-router.get('/favorite/:id&&:username', challengesController.favorite);
-router.get('/profile/:id', challengesController.profile);
+router.post('/favorite', challengesController.favorite);
+router.get('/profile', challengesController.profile);
 
-router.get('/login/callback', challengesController.loginCallBack, (req, res) => {  res.redirect('/') })
+router.get('/login/callback', challengesController.loginCallBack, challengesController.loginRouteCallBack)
 
 module.exports = router;

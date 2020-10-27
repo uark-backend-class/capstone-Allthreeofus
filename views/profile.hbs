@@ -1,13 +1,38 @@
-<div class="container">
-    <h1>Favorites</h1>
-    <container>
-    {{#if favorites}}
-    {{#each favorites}}
-    <h2>{{this.name}}</h2>
-    {{/each}}
-    {{/if}}
-    {{#unless favorites}}
-    <p>See all your saved solutions here!</p>
-    {{/unless}}
-    </container>
+<div class='bg-secondary border border-white'>
+    <div class="border border-white p-1">
+        <h1 class='m-auto' style='width:fit-content;'>Favorites</h1>
+        {{#if favorites}}
+            <form method='get'>
+                {{#each favorites}}
+                    <button formaction='/solution/{{this.problemID}}' class='text-primary rounded-pill bg-dark p-1 m-auto' style="height: fit-content; width:fit-content">{{this.solutionName}}<br>by {{this.username}}</button>
+                {{/each}}
+            </form>
+        {{/if}}
+        {{#unless favorites}}
+            <p>See all your saved solutions here!</p>
+        {{/unless}}
+    </div>
+    <div class='border border-white p-1'>
+        <h1 class='m-auto' style='width:fit-content;'>Submitted Solutions</h1>
+        {{#if submittedSolutions}}
+            <form method='get'>
+                {{#each submittedSolutions}}
+                    <button formaction='/solution/{{this.id}}' class='text-primary rounded-pill bg-dark'>{{this.solutionName}}</button>
+                {{/each}}
+            </form>
+        {{/if}}
+        {{#unless submittedSolutions}}
+            <p>See all your submitted solutions here!</p>
+        {{/unless}}
+    </div>
+{{#if administrator.admin}}
+    <div class='border border-white p-1'>
+        <h1 class='m-auto' style='width:fit-content;'>Awaiting Approval</h1>
+            {{#each approveList}}
+                <form method="get">
+                    <button formaction="/solution/{{this.id}}" formmethod="get" class='text-white rounded-pill bg-primary border border-white p-1'>{{this.solutionName}}<br>by {{this.username}}</button>
+                </form>
+            {{/each}}
+    </div>
+{{/if}}
 </div>

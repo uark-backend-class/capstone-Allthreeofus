@@ -1,0 +1,35 @@
+<div class='bg-secondary border border-white'>
+    <pre class='px-1 border border-white bg-dark'>
+        <code class='text-white' style="width:fit-content;">
+        {{solution.data}}
+        </code>
+    </pre>
+    <div class='d-flex flex-row'>
+    {{#unless favored}}
+        <form method="post">
+            <input type="hidden" name='id' value={{solution.id}}>
+            <button type='submit' formaction="/favorite" formmethod="POST" class='text-white rounded-pill bg-primary border border-white p-1'>Favorite?</button>
+        </form>
+    {{/unless}}
+    {{#if favored}}
+        <form method="post">
+            <input type="hidden" name='id' value={{solution.id}}>
+            <button type='submit' formaction="/delete/favorite" formmethod="POST" class='text-white rounded-pill bg-primary border border-white p-1'>Unfavorite?</button>
+        </form>
+    {{/if}}
+    {{#if administrator.admin}}
+        {{#unless solution.authorized}}
+            <form method="post">
+            <input type="hidden" name='auth' value={{solution.id}}>
+            <button type='submit' formaction="/update" formmethod="POST" class='text-white rounded-pill bg-primary border border-white p-1'>Approve?</button>
+        </form>
+        {{/unless}}
+        {{#if solution.authorized}}
+            <form method="post">
+            <input type="hidden" name='auth' value={{solution.id}}>
+            <button type='submit' formaction="/update" formmethod="POST" class='text-white rounded-pill bg-primary border border-white p-1'>Disapprove?</button>
+        </form>
+        {{/if}}
+    {{/if}}
+    </div>
+</div>

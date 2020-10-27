@@ -1,53 +1,19 @@
 
-<div class='container'>
-    <h1>{{problem.name}}</h1>
-        <table>
-            <thead scope='col'>
-                <td>Solutions</td>
-            </thead>
-            <tbody>
-                <tr class='bg-dark'>
-                    {{#each solution}}
-                        <td class='border'>
-                            {{#if ../user.[0].admin}}
-                            <pre>
-                                <code class='text-white'>
-                                {{this.data}}
-                                </code>
-                            </pre>
-                            {{/if}}
-                        </td>
-                        {{#unless ../user.[0].admin}}
-                            <td class='border'>
-                                {{#if this.authorized}}
-                                <pre>
-                                    <code class='text-white'>
-                                    {{this.data}}
-                                    </code>
-                                </pre>
-                            {{/if}}
-                            </td>
-                        {{/unless}}
-                    {{/each}}
-                </tr>
-                {{#if user.[0].admin}}
-                <tr class='bg-primary'>
-                    {{#each solution}}
-                    <td>
-                        <a href= '/favorite/{{this.id}}&&{{../user.[0].username}}' class='text-white'>Favorite?</a>
-                    </td>
-                    {{/each}}
-                </tr>
-                {{/if}}
-                {{#unless user.[0].admin}}
-                <tr>
-                    {{#each solution}}
-                        {{#if this.authorized}}
-                        <a href= '/favorite/{{this.id}}&&{{../user.[0].username}}'>Favorite?</a>
-                        {{/if}}
-                    {{/each}}
-                </tr>
-                {{/unless}}
-            </tbody>
-        </table>
+<div class='container bg-secondary p-1 m-auto'>
+    <h1 class='m-auto' style="width: 200px">{{problem.name}}</h1>
+        <h2 class='text-white pl-2'>Solutions</h2>
+        <form method='get'>
+            {{#if admin}}
+                {{#each solution}}
+                    <button type='submit' formaction='/solution/{{this.id}}' class='text-primary rounded-pill bg-dark'>{{this.solutionName}}<br>by{{this.username}}</button>
+                {{/each}}
+            {{/if}}
+            {{#unless admin}}
+                {{#each solution}}
+                    {{#if this.authorized}}
+                        <button type='submit' formaction='/solution/{{this.id}}' class='text-primary rounded-pill bg-dark'>{{this.solutionName}}<br>by {{this.username}}</button>
+                    {{/if}}
+                {{/each}}
+            {{/unless}}
+        </form>             
 </div>

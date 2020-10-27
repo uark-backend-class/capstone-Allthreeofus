@@ -6,12 +6,14 @@ const routes = require('./routes/routes');
 const passport = require('passport');
 const githubStrategy = require('passport-github2');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 app.engine('hbs', hbs({ extname: 'hbs' }));
 app.set('view engine', 'hbs');
 
 app.use(bodyParser.json());
+app.use(cookieParser());
 
 app.use(session({ 
   secret: 'trial and error',

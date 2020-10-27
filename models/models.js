@@ -32,6 +32,10 @@ module.exports.Solutions = (sequelize, Sequelize) => {
         primaryKey: true,
         autoIncrement: true,
       },
+      solutionName: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       name: {
         type: Sequelize.STRING,
         references: {
@@ -59,10 +63,11 @@ module.exports.Solutions = (sequelize, Sequelize) => {
 
 module.exports.Favorites = (sequelize,Sequelize)=>{
   return sequelize.define('Favorites', {
-    num: {
+    id: {
       type: Sequelize.INTEGER,
       allowNull: false,
       primaryKey: true,
+      autoIncrement: true,
     },
     problemID: {
       type: Sequelize.INTEGER,
@@ -72,16 +77,41 @@ module.exports.Favorites = (sequelize,Sequelize)=>{
         key: 'id',
       }
     },
-    username: {
+    name: {
+      type: Sequelize.STRING,
+      references: {
+        model: 'Problems',
+        key: 'name',
+      }
+    },
+    solutionName: {
       type: Sequelize.STRING,
       allowNull: false,
+    },
+    username: {
+      type: Sequelize.STRING,
       references: {
         model: 'Users',
         key: 'username',
       }
     },
+    data: {
+      type: Sequelize.TEXT,
+      allowNull: false,
+    },
+    authorized: {
+      type: Sequelize.BOOLEAN,
+    },
+    favoriteUser: {
+      type: Sequelize.STRING,
+      allowNull: false,
+      references: {
+        model: 'Users',
+        key: 'username',
+      },
+    },
   })
-}
+};
 
 
 
