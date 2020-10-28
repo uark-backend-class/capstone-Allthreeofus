@@ -48,6 +48,6 @@ passport.deserializeUser((user, done) => {
   done(null, user);
 });
 
-app.listen(3000, () => {
-  console.log("Server now running on port 3000");
+app.listen(process.env.PORT, () => {
+  console.log("Server now running");
 });
