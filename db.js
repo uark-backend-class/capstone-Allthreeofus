@@ -10,7 +10,7 @@ const Problem = Model.Problems(sequelize, Sequelize);
 const Solution = Model.Solutions(sequelize, Sequelize);
 const Favorite = Model.Favorites(sequelize, Sequelize);
 
-sequelize.sync({force: true}).then(() => console.log("Tables are created.")).then(() => {
+sequelize.sync().then(() => console.log("Tables are created.")).then(() => {
     User.upsert({
         username: process.env.ADMIN,
         admin: true,
