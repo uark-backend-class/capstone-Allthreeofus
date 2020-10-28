@@ -18,21 +18,27 @@ sequelize.sync().then(() => console.log("Tables are created.")).then(() => {
 
     Problem.upsert({
         name: 'FIZZBUZZ',
+        description: 'Write a program that prints the numbers from 1 to 100. But for multiples of three print “Fizz” instead of the number and for the multiples of five print “Buzz”. For numbers which are multiples of both three and five print “FizzBuzz”.'
     });
     Problem.upsert({
-        name: 'FIBONACCI'
+        name: 'FIBONACCI',
+        description: 'Write a program that returns the nth number of a fibonacci sequence.'
     });
     Problem.upsert({
-        name: 'LONGEST STRING IN ARRAY'
+        name: 'LONGEST STRING IN ARRAY',
+        description: 'Write a program that returns the longest string in an array. Assume that the array isn\'t empty.'
     });
     Problem.upsert({
-        name: 'BALANCED BRACKETS'
+        name: 'BALANCED BRACKETS',
+        description: 'Write a program that checks to see if there are matching closing brackets for each open bracket in a given string of code.'
     });
     Problem.upsert({
-        name: 'HAPPY NUMBERS'
+        name: 'HAPPY NUMBERS',
+        description: `According to Wikipedia a happy number is defined by the following process : "Starting with any positive integer, replace the number by the sum of the squares of its digits, and repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does not include 1. Those numbers for which this process ends in 1 are happy numbers, while those that do not end in 1 are unhappy numbers (or sad numbers)". Write a JavaScript program to find and print the first 5 happy numbers.`
     });
     Problem.upsert({
         name: 'WUBSTEP',
+        description: `Given an input that consists of a single non-empty string, consisting only of uppercase English letters,  whose length doesn't exceed 200 characters, and whose contents consist of single words split by an minumum of one instance of the letters 'WUB', write a program that returns the contents of the string as individual words with a single space between them without any cases of 'WUB'.`
     });
     Solution.upsert({
         id: 1,

@@ -21,6 +21,9 @@ module.exports.Problems = (sequelize, Sequelize) => {
           allowNull: false,
           primaryKey: true,
       },
+      description: {
+        type: Sequelize.TEXT,
+      }
     })
   }
 
