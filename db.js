@@ -35,6 +35,7 @@ sequelize.sync().then(() => console.log("Tables are created.")).then(() => {
         name: 'WUBSTEP',
     });
     Solution.upsert({
+        id: 1,
         name: 'FIBONACCI',
         solutionName: 'ITERATIVE SOLUTION',
         data:
@@ -49,6 +50,7 @@ sequelize.sync().then(() => console.log("Tables are created.")).then(() => {
   username: 'Allthreeofus',
     });
     Solution.upsert({
+        id: 2,
         name: 'FIBONACCI',
         solutionName: 'RECURSIVE SOLUTION',
         data:
@@ -62,6 +64,7 @@ authorized: true,
 username: 'Allthreeofus',
     });
     Solution.upsert({
+        id: 3,
         name: 'FIBONACCI',
         solutionName: 'FORMULAIC SOLUTION',
         data:
@@ -77,6 +80,7 @@ authorized: true,
 username: 'Allthreeofus',
     });
     Solution.upsert({
+        id: 4,
         name: 'FIZZBUZZ',
         solutionName: 'IF STATEMENT SOLUTION',
         data:
@@ -102,6 +106,7 @@ username: 'Allthreeofus',
         authorized: true,
     });
     Solution.upsert({
+        id: 5,
         name: 'FIZZBUZZ',
         solutionName: 'TERNARY SOLUTION',
         data:
@@ -118,6 +123,7 @@ username: 'Allthreeofus',
         authorized: true,
     });
     Solution.upsert({
+        id: 6,
         name: 'FIZZBUZZ',
         solutionName: 'BRANCHLESS SOLUTION',
         data: 
@@ -131,6 +137,7 @@ username: 'Allthreeofus',
         authorized: true,
     });
     Solution.upsert({
+        id: 7,
         name: 'LONGEST STRING IN ARRAY',
         solutionName: '\'FOR\' LOOP',
         data: 
@@ -147,6 +154,7 @@ username: 'Allthreeofus',
         authorized: true,
     });
     Solution.upsert({
+        id: 8,
         name: 'LONGEST STRING IN ARRAY',
         solutionName: '.forEach METHOD',
         data: 
@@ -163,6 +171,7 @@ username: 'Allthreeofus',
         authorized: true,
     });
     Solution.upsert({
+        id: 9,
         name: 'BALANCED BRACKETS',
         solutionName: 'RETURN BOOLEAN',
         data: 
@@ -200,6 +209,7 @@ username: 'Allthreeofus',
         authorized: true,
     });
     Solution.upsert({
+        id: 10,
         name: 'HAPPY NUMBERS',
         solutionName: 'FIRST FIVE',
         data: 
@@ -238,6 +248,7 @@ console.log('First 5 happy numbers are : '+f5);`,
         authorized: true,
     });
     Solution.upsert({
+        id: 11,
         name: 'WUBSTEP',
         solutionName: 'REPLACE AND REGEX',
         data: 
@@ -253,6 +264,7 @@ console.log('First 5 happy numbers are : '+f5);`,
         authorized: true,
     });
     Solution.upsert({
+        id: 12,
         name: 'WUBSTEP',
         solutionName: 'SPLIT, FILTER, AND JOIN',
         data: 
