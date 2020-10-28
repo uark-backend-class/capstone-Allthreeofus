@@ -101,10 +101,9 @@ module.exports = {
         let solution = await db.Solution.findAll({where: {name: req.params.id}, raw: true});
         if (user){
             var admin = await db.User.findByPk(user.username, {raw: true});
+            problem.admin = true;
         }
-        else{ admin = undefined };
-        let result = await db.Solution.findAll();
-        console.log(results);
+        else { problem.admin = false};
         res.render('problem', {problem, user, solution, admin});
     },
     isAuthenticated: function (req, res, next) {
