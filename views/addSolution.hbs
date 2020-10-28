@@ -1,0 +1,13 @@
+<div class='bg-secondary border border-white'>
+    <form class='bg-dark text-white border border-white'>
+        <h2>Name of Challenge: {{solution.name}}</h2>
+        <label for='solutionName'>Solution Name</label>
+        <input id='solutionName' name='solutionName' value='{{solution.solutionName}}'><br>
+        <label for='data'>Solution Code</label>
+        <textarea id='data' name='data' value='{{solution.data}}' rows="25" cols='100' style='max-width:max-content;'>{{#if solution.data}}{{solution.data}}{{/if}}</textarea><br>
+        <input type ='hidden' name='username' value='{{user.username}}'>
+        <input type ='hidden' name='id' value='{{solution.id}}'>
+        <input type ='hidden' name="name" value="{{solution.name}}">
+        <button type='submit' formaction="/update" formmethod="POST" class='text-white rounded-pill bg-primary border border-white p-1'>Submit!</button>
+    </form>
+</div>

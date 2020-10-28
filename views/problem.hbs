@@ -17,3 +17,9 @@
             {{/unless}}
         </form>             
 </div>
+{{#if user}}
+        <form method="post">
+        <input type="hidden" name='name' value={{problem.name}}>
+        <button type='submit' formaction="/add" formmethod="POST" class='text-white rounded-pill bg-primary border border-white p-1'>Submit a Solution?</button>
+    </form>
+{{/if}}

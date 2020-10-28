@@ -39,16 +39,34 @@ module.exports = {
     },
     
     addSolution: async function (req, res) {
-        let solution = await db.Solution.upsert(req.body);
-        res.render('profile', { user, solution});
+        let result = req.body;
+        console.log(result);
+        let solution = undefined;
+        if (result.id){
+            solution = await db.Solution.findByPk(result.id, {raw: true});
+            console.log(solution);
+        }
+        else {
+            solution = result;
+        }
+        res.render('addSolution', { user, solution });
     },
     
     updateSolution: async function (req, res) {
-        console.log(req.body.auth);
-        let auth = await db.Solution.findByPk(req.body.auth, {raw: true})
-        auth.authorized = !auth.authorized;
-        await db.Solution.upsert(auth);
-        res.redirect('back');
+        if(req.body.auth){
+            let auth = await db.Solution.findByPk(req.body.auth, {raw: true})
+            auth.authorized = !auth.authorized;
+            await db.Solution.upsert(auth);
+            res.redirect('back');
+        }
+        else{
+            let solution = req.body;
+            let problem = {name: solution.name};
+            console.log(solution);
+            await db.Solution.upsert(solution);
+            res.redirect('/');
+        }
+        
     },
 
     deleteFavorite: async function (req, res) {
@@ -63,9 +81,19 @@ module.exports = {
 
     solution: async function (req, res) {
         let solution = await db.Solution.findByPk(req.params.solution, {raw: true});
-        let favorited = await db.Favorite.findAll({where: {favoriteUser: user.username, problemID: req.params.solution}, raw: true});
-        let administrator = await db.User.findByPk(user.username, {raw: true});
-        res.render('solutions', { solution, user, favored: favorited[0], administrator });
+        if (user){
+            var favorited = await db.Favorite.findAll({where: {favoriteUser: user.username, problemID: req.params.solution}, raw: true});
+            var administrator = await db.User.findByPk(user.username, {raw: true});
+            var sameUser = (user.username == solution.username);
+            var favored = favorited[0];
+        }
+        else {
+            favorited = undefined;
+            administrator = undefined;
+            sameUser = undefined;
+            favored = undefined;
+        }
+        res.render('solutions', { solution, user, favored, administrator, sameUser });
     },
 
     problem: async function (req, res) {

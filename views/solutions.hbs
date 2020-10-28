@@ -4,7 +4,9 @@
         {{solution.data}}
         </code>
     </pre>
+    {{#if user}}
     <div class='d-flex flex-row'>
+    {{#unless sameUser}}
     {{#unless favored}}
         <form method="post">
             <input type="hidden" name='id' value={{solution.id}}>
@@ -17,7 +19,12 @@
             <button type='submit' formaction="/delete/favorite" formmethod="POST" class='text-white rounded-pill bg-primary border border-white p-1'>Unfavorite?</button>
         </form>
     {{/if}}
+    {{/unless}}
     {{#if administrator.admin}}
+        <form method="post">
+            <input type="hidden" name='id' value={{solution.id}}>
+            <button type='submit' formaction="/delete/solution" formmethod="POST" class='text-white rounded-pill bg-primary border border-white p-1'>Delete Solution?</button>
+        </form>
         {{#unless solution.authorized}}
             <form method="post">
             <input type="hidden" name='auth' value={{solution.id}}>
@@ -31,5 +38,12 @@
         </form>
         {{/if}}
     {{/if}}
+    {{#if sameUser}}
+        <form method="post">
+            <input type="hidden" name='id' value={{solution.id}}>
+            <button type='submit' formaction="/add" formmethod="POST" class='text-white rounded-pill bg-primary border border-white p-1'>Update Your Solution?</button>
+        </form>
+    {{/if}}
     </div>
+    {{/if}}
 </div>

@@ -22,6 +22,18 @@ sequelize.sync({force: true}).then(() => console.log("Tables are created.")).the
     Problem.upsert({
         name: 'FIBONACCI'
     });
+    Problem.upsert({
+        name: 'LONGEST STRING IN ARRAY'
+    });
+    Problem.upsert({
+        name: 'BALANCED BRACKETS'
+    });
+    Problem.upsert({
+        name: 'HAPPY NUMBERS'
+    });
+    Problem.upsert({
+        name: 'WUBSTEP',
+    });
     Solution.upsert({
         name: 'FIBONACCI',
         solutionName: 'ITERATIVE SOLUTION',
@@ -115,6 +127,145 @@ username: 'Allthreeofus',
         "Buzz".repeat(x % 5 === 0) || x);
     }
 }`,
+        username: 'Allthreeofus',
+        authorized: true,
+    });
+    Solution.upsert({
+        name: 'LONGEST STRING IN ARRAY',
+        solutionName: '\'FOR\' LOOP',
+        data: 
+`\nfunction longestString1(arr) {
+	var longest = '';
+	for (var i = 0; i < arr.length; i++) {
+		if (arr[i].length > longest.length) {
+			longest = arr[i];
+		}
+	}
+	return longest;
+}`,
+        username: 'Allthreeofus',
+        authorized: true,
+    });
+    Solution.upsert({
+        name: 'LONGEST STRING IN ARRAY',
+        solutionName: '.forEach METHOD',
+        data: 
+`\nconst longestString2 = (arr) => {
+	let longest = '';
+	arr.forEach((item) => {
+		if(item.length > longest.length) {
+            longest = item;
+        }
+	});
+	return longest;
+}`,
+        username: 'Allthreeofus',
+        authorized: true,
+    });
+    Solution.upsert({
+        name: 'BALANCED BRACKETS',
+        solutionName: 'RETURN BOOLEAN',
+        data: 
+`\nconst balancedbrackets = (str) => {
+    const stack = [];
+    let openers = ["{", "[", "("];
+    let closers = ["}", "]", ")"];
+    
+    const dict = {
+      "{" : "}",
+      "[" : "]",
+      "(" : ")"
+    }
+  
+    for(let i = 0; i < str.length; i++) {
+          let char = str[i];
+          if(openers.includes(char)) {
+              stack.push(char);
+          }
+          else if(closers.includes(char)) { 
+  
+              if(!stack.length) {
+                  return false;
+              }
+              else if(dict[stack.pop()] !== char) {
+                  return false;
+              }
+          }
+      }
+      
+      return stack.length === 0;
+  
+  }`,
+        username: 'Allthreeofus',
+        authorized: true,
+    });
+    Solution.upsert({
+        name: 'HAPPY NUMBERS',
+        solutionName: 'FIRST FIVE',
+        data: 
+`\nfunction happy_number(num) 
+{
+    var m, n ;
+    var c = [] ;
+ 
+    while(num != 1 && c[num] !== true) 
+    {
+        c[num] = true ;
+        m = 0 ;
+        while (num > 0) {
+            n = num % 10 ;
+            m += n * n ;
+            num = (num  - n) / 10 ;
+        }
+        num = m ;
+    }
+    return (num == 1) ;
+}
+ 
+var cnt = 5;
+var num = 1;
+var f5 = ''; 
+while(cnt-- > 0) 
+{
+    while(!happy_number(num))
+        num++ ;
+f5 = f5+(num + ", ") ;
+
+    num++ ;
+}
+console.log('First 5 happy numbers are : '+f5);`,
+        username: 'Allthreeofus',
+        authorized: true,
+    });
+    Solution.upsert({
+        name: 'WUBSTEP',
+        solutionName: 'REPLACE AND REGEX',
+        data: 
+`\nfunction songDecoder(song) {
+	return (
+		song
+
+			.replace(/(WUB)+/g, ' ')
+
+            .trim()
+    }`,
+        username: 'Allthreeofus',
+        authorized: true,
+    });
+    Solution.upsert({
+        name: 'WUBSTEP',
+        solutionName: 'SPLIT, FILTER, AND JOIN',
+        data: 
+`\nfunction songDecoder(song) {
+	return (
+		song
+			.split('WUB')
+
+			.filter(Boolean)
+
+			.join(' ')
+    );
+    }`,
         username: 'Allthreeofus',
         authorized: true,
     });
