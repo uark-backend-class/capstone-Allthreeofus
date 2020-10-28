@@ -103,6 +103,8 @@ module.exports = {
             var admin = await db.User.findByPk(user.username, {raw: true});
         }
         else{ admin = undefined };
+        let result = await db.Solution.findAll();
+        console.log(results);
         res.render('problem', {problem, user, solution, admin});
     },
     isAuthenticated: function (req, res, next) {
