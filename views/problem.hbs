@@ -1,6 +1,7 @@
 
 <div class='container bg-secondary p-1 m-auto'>
-    <h1 class='m-auto' style="width: 200px">{{problem.name}}</h1>
+    <h1 class='m-auto' style="width: fit-content">{{problem.name}}</h1>
+        <p class='text-white pl-2'>{{problem.description}}</p>
         <h2 class='text-white pl-2'>Solutions</h2>
         <form method='get'>
             {{#if problem.admin}}

@@ -104,6 +104,7 @@ module.exports = {
             problem.admin = true;
         }
         else { problem.admin = false};
+        console.log(problem);
         res.render('problem', {problem, user, solution, admin});
     },
     isAuthenticated: function (req, res, next) {
